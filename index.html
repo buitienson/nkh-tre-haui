@@ -92,7 +92,7 @@ function cnt(p){
   return {bb:bb,bc:bc,sc:sc,shtt:p.shtt.length,nv:p.nhiem_vu.length,cg:p.cgcn.length,gt:p.giai_thuong.length,sach:p.sach.length,sv:p.hdsv.length};
 }
 $("#scope").textContent=D.pham_vi+" Cập nhật "+D.cap_nhat+".";
-$("#foot").textContent="Nguồn: danh sách nhà khoa học trẻ do Ban Tổ chức - Nhân sự cung cấp; thành tích lấy từ mục Công trình khoa học của DST portal. "+D.ghi_chu_nam_cu+" Phân hạng Scopus/WoS theo Scimago như đã ghi trong phụ lục. Các bản ghi trùng họ tên khác năm sinh hoặc đơn vị không được tính; danh sách nghi ngờ do Ban rà lại.";
+$("#foot").textContent="Nguồn: danh sách nhà khoa học trẻ do Ban Tổ chức - Nhân sự cung cấp; thành tích lấy từ mục Công trình khoa học của DST portal. "+D.ghi_chu_nam_cu+" Phân hạng Scopus/WoS theo Scimago như đã ghi trong phụ lục. "+(D.ghi_chu_shtt||"")+" Các bản ghi trùng họ tên khác năm sinh hoặc đơn vị không được tính; danh sách nghi ngờ do Ban rà lại.";
 var state={q:"",u:""};
 var units=Array.from(new Set(P.map(function(p){return p.don_vi}))).sort();
 function list(){
