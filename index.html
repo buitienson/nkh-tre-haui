@@ -69,7 +69,7 @@ ol.list li{padding:8px 0;border-bottom:1px solid var(--line)}ol.list li:last-chi
   <header class="top">
     <div>
       <h1>Nhà khoa học trẻ Đại học Công nghiệp Hà Nội</h1>
-      <div class="sub" id="scope"></div>
+      
     </div>
   </header>
   <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true">Danh sách</button></div>
@@ -90,7 +90,6 @@ function cnt(p){
   var sc=p.cong_bo.filter(function(x){return /Scopus\/WoS/.test(x.loai)}).length;
   return {bb:bb,bc:bc,sc:sc,shtt:p.shtt.length,nv:p.nhiem_vu.length,cg:p.cgcn.length,gt:p.giai_thuong.length,sach:p.sach.length,sv:p.hdsv.length};
 }
-$("#scope").textContent=D.pham_vi+" Cập nhật "+D.cap_nhat+".";
 var state={q:"",u:""};
 var units=Array.from(new Set(P.map(function(p){return p.don_vi}))).sort();
 function list(){
