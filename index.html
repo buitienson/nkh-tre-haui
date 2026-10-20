@@ -74,7 +74,6 @@ ol.list li{padding:8px 0;border-bottom:1px solid var(--line)}ol.list li:last-chi
   </header>
   <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true">Danh sách</button></div>
   <main id="app"></main>
-  <p class="note" id="foot"></p>
   <p class="note"><b>Thực hiện:</b> Bùi Tiến Sơn · Ban Khoa học, Công nghệ và Đổi mới sáng tạo, Đại học Công nghiệp Hà Nội</p>
 </div>
 <div class="tip" id="tip" hidden></div>
@@ -92,7 +91,6 @@ function cnt(p){
   return {bb:bb,bc:bc,sc:sc,shtt:p.shtt.length,nv:p.nhiem_vu.length,cg:p.cgcn.length,gt:p.giai_thuong.length,sach:p.sach.length,sv:p.hdsv.length};
 }
 $("#scope").textContent=D.pham_vi+" Cập nhật "+D.cap_nhat+".";
-$("#foot").textContent="Nguồn: danh sách nhà khoa học trẻ do Ban Tổ chức - Nhân sự cung cấp; thành tích lấy từ mục Công trình khoa học của DST portal. "+D.ghi_chu_nam_cu+" Phân hạng Scopus/WoS theo Scimago như đã ghi trong phụ lục. "+(D.ghi_chu_shtt||"")+" Các bản ghi trùng họ tên khác năm sinh hoặc đơn vị không được tính; danh sách nghi ngờ do Ban rà lại.";
 var state={q:"",u:""};
 var units=Array.from(new Set(P.map(function(p){return p.don_vi}))).sort();
 function list(){
