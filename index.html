@@ -56,6 +56,7 @@ ol.list{margin:0;padding:6px 16px 6px 40px}
 ol.list li{padding:8px 0;border-bottom:1px solid var(--line)}ol.list li:last-child{border:0}
 .t{font-weight:500}.m{color:var(--muted);font-size:13px}
 .chip{display:inline-block;font-size:12px;padding:1px 8px;border-radius:99px;background:var(--soft);color:var(--accent-text);margin-right:6px;white-space:nowrap}
+.chip.nh{background:transparent;border:1px solid var(--line);color:var(--muted)}.chip.old{border-style:dashed}
 .sub2{padding:8px 16px 0;color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
 .note{margin-top:20px;font-size:12.5px;color:var(--muted)}
 .pill{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--accent);color:var(--accent-ink);border:0;border-radius:99px;padding:9px 18px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:30}
@@ -91,7 +92,7 @@ function cnt(p){
   return {bb:bb,bc:bc,sc:sc,shtt:p.shtt.length,nv:p.nhiem_vu.length,cg:p.cgcn.length,gt:p.giai_thuong.length,sach:p.sach.length,sv:p.hdsv.length};
 }
 $("#scope").textContent=D.pham_vi+" Cập nhật "+D.cap_nhat+".";
-$("#foot").textContent="Nguồn: danh sách nhà khoa học trẻ do Ban Tổ chức - Nhân sự cung cấp; thành tích lấy từ các phụ lục công nhận công trình khoa học năm học 2025–2026. Cột Scopus/WoS tính theo phân hạng Scimago đã ghi trong phụ lục.";
+$("#foot").textContent="Nguồn: danh sách nhà khoa học trẻ do Ban Tổ chức - Nhân sự cung cấp; thành tích lấy từ mục Công trình khoa học của DST portal. "+D.ghi_chu_nam_cu+" Phân hạng Scopus/WoS theo Scimago như đã ghi trong phụ lục. Các bản ghi trùng họ tên khác năm sinh hoặc đơn vị không được tính; danh sách nghi ngờ do Ban rà lại.";
 var state={q:"",u:""};
 var units=Array.from(new Set(P.map(function(p){return p.don_vi}))).sort();
 function list(){
@@ -120,7 +121,7 @@ app.addEventListener("mouseleave",function(){tip.hidden=true});
 app.addEventListener("click",function(e){var el=e.target.closest(".card");if(el){tip.hidden=true;location.hash="p"+el.dataset.id}
   if(e.target.closest(".back")){location.hash=""}});
 function item(x,i){
-  return '<li><div class="t">'+esc(x.ten)+'</div><div class="m">'+(x.loai?'<span class="chip">'+esc(x.loai)+'</span>':'')+[x.noi,x.thoi_gian,x.vai_tro].filter(Boolean).map(esc).join(' · ')+'</div></li>';
+  return '<li><div class="t">'+esc(x.ten)+'</div><div class="m">'+(x.loai?'<span class="chip">'+esc(x.loai)+'</span>':'')+(x.nh?'<span class="chip nh'+(x.nh==='2025-2026'?'':' old')+'" title="'+(x.nh==='2025-2026'?'Đã rà soát':'Chưa rà soát')+'">'+esc(x.nh)+(x.nh==='2025-2026'?'':' · chưa rà soát')+'</span>':'')+[x.noi,x.thoi_gian,x.vai_tro].filter(Boolean).map(esc).join(' · ')+'</div></li>';
 }
 function sec(title,arr){
   return '<section class="sec"><h3>'+title+'<em>'+arr.length+'</em></h3>'+(arr.length?'<ol class="list">'+arr.map(item).join('')+'</ol>':'<div class="empty">Chưa có dữ liệu trong phạm vi thống kê.</div>')+'</section>';
